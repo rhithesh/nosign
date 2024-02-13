@@ -1,6 +1,15 @@
 import Link from "next/link";
 import Infinity from "../infinity.svg";
 import Image from "next/image";
+import {
+	NavigationMenu,
+	NavigationMenuContent,
+	NavigationMenuItem,
+	NavigationMenuLink,
+	NavigationMenuList,
+	NavigationMenuTrigger,
+	navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu";
 
 export default function Component() {
 	return (
