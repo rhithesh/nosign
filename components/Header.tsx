@@ -15,7 +15,7 @@ export default function Header() {
 						variant={"link"}
 						className=" bg-transparent hover:bg-transparent outline-none focus:outline-none border-none  mt-2"
 						asChild>
-						<Link className="  font-bold    text-4xl" href="/">
+						<Link className="  text-blue-100  text-4xl " href="/">
 							Nosign
 						</Link>
 					</Button>
