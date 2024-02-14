@@ -11,6 +11,7 @@ import {
 	navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 
+
 export default function Component() {
 	return (
 		<div className="flex flex-col min-h-[100dvh]">
