@@ -1,0 +1,8 @@
+{
+	"schema": "app/schema.ts",
+	"out": "./drizzle",
+	"driver": "pg",
+	"dbCredentials": {
+		"connectionString": "postgresql://rhithesh:S8q6IazDZWUJ@ep-cold-snowflake-a16kdx7u.ap-southeast-1.aws.neon.tech/nosign?sslmode=true"
+	}
+}
