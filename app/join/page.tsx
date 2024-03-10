@@ -18,10 +18,10 @@ export default function Signup() {
 						</h2>
 						<div className=" flex gap-9">
 							<Button>
-								<LoginLink>Sign in</LoginLink>
+								<LoginLink postLoginRedirectURL="/">Sign in</LoginLink>
 							</Button>
 							<Button>
-								<RegisterLink>Sign up</RegisterLink>
+								<RegisterLink postLoginRedirectURL="/">Sign up</RegisterLink>
 							</Button>
 						</div>
 					</Card>

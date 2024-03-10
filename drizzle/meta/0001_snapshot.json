@@ -1,6 +1,6 @@
 {
-  "id": "00000000-0000-0000-0000-000000000000",
-  "prevId": "",
+  "id": "39182ecb-574a-47ca-ae81-ec8310b7a1f5",
+  "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "5",
   "dialect": "pg",
   "tables": {
@@ -57,11 +57,10 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "userlink_user_id_fkey": {
-          "name": "userlink_user_id_fkey",
+        "userlink_user_id_User_username_fk": {
+          "name": "userlink_user_id_User_username_fk",
           "tableFrom": "userlink",
           "tableTo": "User",
-          "schemaTo": "public",
           "columnsFrom": [
             "user_id"
           ],
@@ -73,14 +72,23 @@
         }
       },
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {}
+      "uniqueConstraints": {
+        "userlink_link_user_id_unique": {
+          "name": "userlink_link_user_id_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "link",
+            "user_id"
+          ]
+        }
+      }
     }
   },
   "enums": {},
   "schemas": {},
   "_meta": {
+    "columns": {},
     "schemas": {},
-    "tables": {},
-    "columns": {}
+    "tables": {}
   }
 }

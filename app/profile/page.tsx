@@ -1,9 +1,7 @@
-"use client";
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
-import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
+
 import Image from "next/image";
-export default function Profile() {
-	const { user } = useKindeBrowserClient();
+export default async function Profile() {
 	return (
 		<div className=" h-screen w-screen flex justify-center items-center">
 			<div className="  w-[450px] flex flex-col items-center border py-10">
@@ -17,7 +15,7 @@ export default function Profile() {
 					/> */}
 				</div>
 				<div className=" font-mono text-center py-2  mt-4 rounded-xl mx-2 bg-gradient-to-r from-indigo-200 via-purple-500 to-pink-200 text-3xl border w-[350px] ">
-					<h1>Deekshit</h1>
+					<h1>rhithesh1947@gmail </h1>
 					{/* <h1 className=" text-mono  text-sm">Email:{user?.email}</h1> */}
 				</div>
 			</div>

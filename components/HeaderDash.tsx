@@ -19,9 +19,8 @@ import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 
 import { useEffect } from "react";
 
-export default function Header() {
+export default function HeaderDash() {
 	const { user } = useKindeBrowserClient();
-	console.log(user);
 	useEffect(() => {
 		console.log("Header");
 	}, []);
@@ -29,7 +28,7 @@ export default function Header() {
 	return (
 		<>
 			<div className=" w-screen flex pb-3  justify-between   items-baseline ">
-				<div>
+				<div className=" flex items-center justify-center">
 					<Button
 						variant={"link"}
 						className=" bg-transparent hover:bg-transparent outline-none focus:outline-none border-none  mt-2"
@@ -38,34 +37,9 @@ export default function Header() {
 							<h1 className="  mx-5 text-4xl  ">Nosign</h1>
 						</Link>
 					</Button>
-					<Switch
-						onCheckedChange={() => {
-							console.log("checked");
-						}}
-					/>
+					<Image alt="knf" width={50} src={Infinity} className="  mr-3  " />
 				</div>
 				<div className="  flex justify-center    space-x-3 mx-3		">
-					<div className="flex justify-center items-center font-mono text-green-400">
-						writing..
-					</div>
-					<div className=" hidden bg-blue-50 rounded-full gap-3 px-6 justify-center  my-2 md:flex items-center">
-						<Avatar className=" m-1 h-9 w-9  ring ring-pink-500 ring-offset-2 ">
-							<AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-							<AvatarFallback>CN</AvatarFallback>
-						</Avatar>
-						<Avatar className=" m-1 h-9 w-9 ">
-							<AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-							<AvatarFallback>CN</AvatarFallback>
-						</Avatar>
-						<Avatar className=" m-1 h-9 w-9 ">
-							<AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-							<AvatarFallback>CN</AvatarFallback>
-						</Avatar>
-
-						<Avatar className=" m-1 h-9 w-9 ring ring-pink-500 ring-offset-2  ">
-							<AvatarFallback>4+</AvatarFallback>
-						</Avatar>
-					</div>
 					<div className="border rounded-md flex">
 						<NavigationMenu>
 							<NavigationMenuList>
@@ -79,8 +53,8 @@ export default function Header() {
 											<AvatarFallback>CN</AvatarFallback>
 										</Avatar>
 									</NavigationMenuTrigger>
-									<NavigationMenuContent className=" md:w-[140px] font-mono md:h-[200px] py-2 text-clip px-3">
-										<div className=" flex hover:bg-gray-200  pt-2">
+									<NavigationMenuContent className=" md:w-[140px] font-mono md:h-[200px] py-2 text-clip px-3  ">
+										<div className=" flex hover:bg-gray-200  pt-2 cursor-pointer">
 											<svg
 												className=" ml-2"
 												width="15"
@@ -96,7 +70,7 @@ export default function Header() {
 											</svg>
 											<h1 className="  pl-2"> Profile</h1>
 										</div>
-										<div className=" flex hover:bg-gray-200 pt-2">
+										<div className=" flex hover:bg-gray-200 pt-2 cursor-pointer">
 											<svg
 												className=" ml-2"
 												width="15"
@@ -118,10 +92,8 @@ export default function Header() {
 									</NavigationMenuContent>
 								</NavigationMenuItem>
 							</NavigationMenuList>
-							<NavigationMenuViewport />
+							<NavigationMenuViewport className=" right-[70px]" />
 						</NavigationMenu>
-
-						<Image alt="knf" width={50} src={Infinity} className="  mr-3  " />
 					</div>
 				</div>
 			</div>
