@@ -41,7 +41,7 @@ export default function Dashboard() {
 					</div>
 					<div className=" flex flex-wrap  gap-5 w-[1400px]">
 						{Array.from({ length: number }).map((a, index) => (
-							<Dashcard text="hithesh" titel="My name" />
+							<Dashcard key={1} text="hithesh" titel="My name" />
 						))}
 					</div>
 				</div>
