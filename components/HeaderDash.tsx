@@ -15,12 +15,11 @@ import {
 	navigationMenuTriggerStyle,
 	NavigationMenuViewport,
 } from "@/components/ui/navigation-menu";
-import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 
 import { useEffect } from "react";
 
 export default function HeaderDash() {
-	const { user } = useKindeBrowserClient();
+	const user = "";
 	useEffect(() => {
 		console.log("Header");
 	}, []);
@@ -87,7 +86,7 @@ export default function HeaderDash() {
 											<h1 className="  pl-2">Settings</h1>
 										</div>
 										<h1 className=" hover:bg-gray-200 hover:cursor-pointer  pl-2 h-full flex  pt-10">
-											Hi {user?.given_name}
+											hithesh
 										</h1>
 									</NavigationMenuContent>
 								</NavigationMenuItem>
