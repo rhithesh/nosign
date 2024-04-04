@@ -16,12 +16,8 @@ export default function Signup() {
 							Join us to save your links and share them with the world!
 						</h2>
 						<div className=" flex gap-9">
-							<Button>
-								<LoginLink postLoginRedirectURL="/">Sign in</LoginLink>
-							</Button>
-							<Button>
-								<RegisterLink postLoginRedirectURL="/">Sign up</RegisterLink>
-							</Button>
+							<Button>Sign in </Button>
+							<Button>Sign up</Button>
 						</div>
 					</Card>
 				</div>
