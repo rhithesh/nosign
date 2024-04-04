@@ -1,4 +1,3 @@
-import { RegisterLink, LoginLink } from "@kinde-oss/kinde-auth-nextjs/server";
 import Infinity from "../infinity.svg";
 import Image from "next/image";
 import { Card } from "@/components/ui/card";
