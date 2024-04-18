@@ -35,11 +35,6 @@ export default function Header() {
 							<h1 className="  mx-5 text-4xl  ">Nosign</h1>
 						</Link>
 					</Button>
-					<Switch
-						onCheckedChange={() => {
-							console.log("checked");
-						}}
-					/>
 				</div>
 				<div className="  flex justify-center    space-x-3 mx-3		">
 					<div className="flex justify-center items-center font-mono text-green-400">
