@@ -5,8 +5,13 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useEffect, useState } from "react";
-export default function Signup() {
+
+export default function Login() {
 	const [value, setValue] = useState({});
+
+	function Login() {
+		console.log(value);
+	}
 
 	return (
 		<>
