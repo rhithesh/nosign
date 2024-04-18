@@ -45,7 +45,7 @@ export default function Header() {
 					<div className="flex justify-center items-center font-mono text-green-400">
 						writing..
 					</div>
-					<div className=" hidden bg-blue-50 rounded-full gap-3 px-6 justify-center  my-2 md:flex items-center">
+					{/* <div className=" hidden bg-blue-50 rounded-full gap-3 px-6 justify-center  my-2 md:flex items-center">
 						<Avatar className=" m-1 h-9 w-9  ring ring-pink-500 ring-offset-2 ">
 							<AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
 							<AvatarFallback>CN</AvatarFallback>
@@ -62,7 +62,7 @@ export default function Header() {
 						<Avatar className=" m-1 h-9 w-9 ring ring-pink-500 ring-offset-2  ">
 							<AvatarFallback>4+</AvatarFallback>
 						</Avatar>
-					</div>
+					</div> */}
 					<div className="border rounded-md flex">
 						<NavigationMenu>
 							<NavigationMenuList>
