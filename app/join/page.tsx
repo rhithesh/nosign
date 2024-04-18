@@ -4,7 +4,10 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useEffect, useState } from "react";
 export default function Signup() {
+	const [value, setValue] = useState({});
+
 	return (
 		<>
 			<div className=" h-screen w-screen  flex justify-center items-center space-x-7 	">
@@ -16,11 +19,24 @@ export default function Signup() {
 							</div>
 							<div className="flex flex-col space-y-1.5">
 								<Label htmlFor="name">Username</Label>
-								<Input id="name" placeholder=" Username " />
+								<Input
+									onChange={(e) => {
+										setValue({ ...value, username: e.target.value });
+									}}
+									id="name"
+									placeholder="Username"
+								/>
 							</div>
 							<div className="flex flex-col space-y-1.5">
 								<Label htmlFor="name">Password</Label>
-								<Input id="name" type="password" placeholder=" Password " />
+								<Input
+									id="name"
+									type="password"
+									placeholder=" Password "
+									onChange={(e) => {
+										setValue({ ...value, password: e.target.value });
+									}}
+								/>
 							</div>
 							<Button>Sign up</Button>
 						</div>
