@@ -9,7 +9,7 @@ import { useEffect, useRef } from "react";
 import io from "socket.io-client";
 
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
-const socket = io("https://nosignbackend.onrender.com", {
+const socket = io("https://copyserver1.onrender.com", {
 	transports: ["websocket"],
 });
 
