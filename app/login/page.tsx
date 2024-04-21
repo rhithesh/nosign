@@ -1,3 +1,4 @@
+"use client";
 import Infinity from "../infinity.svg";
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
