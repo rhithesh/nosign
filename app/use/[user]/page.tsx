@@ -15,11 +15,6 @@ export default function Dashboard() {
 				<HeaderDash />
 				<div className=" mx-20 ">
 					<div className=" flex justify-end my-5 border">
-						<div>
-							<p>Current Number: {number}</p>
-							<button onClick={() => setNumber(number + 1)}>Increment</button>
-							<button onClick={() => setNumber(number - 1)}>Decrement</button>
-						</div>
 						<Choice>
 							<svg
 								onClick={() => {
