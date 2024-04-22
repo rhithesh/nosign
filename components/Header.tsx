@@ -5,6 +5,7 @@ import { Switch } from "./ui/switch";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Infinity from "@/app/infinity.svg";
 import Image from "next/image";
+import axios from "axios";
 import {
 	NavigationMenu,
 	NavigationMenuContent,
@@ -20,6 +21,7 @@ import { useEffect } from "react";
 
 export default function Header() {
 	useEffect(() => {
+		localStorage.getItem("token");
 		console.log("Header");
 	}, []);
 
@@ -37,26 +39,8 @@ export default function Header() {
 					</Button>
 				</div>
 				<div className="  flex justify-center    space-x-3 mx-3		">
-					<div className="flex justify-center items-center font-mono text-green-400">
+					{/* <div className="flex justify-center items-center font-mono text-green-400">
 						writing..
-					</div>
-					{/* <div className=" hidden bg-blue-50 rounded-full gap-3 px-6 justify-center  my-2 md:flex items-center">
-						<Avatar className=" m-1 h-9 w-9  ring ring-pink-500 ring-offset-2 ">
-							<AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-							<AvatarFallback>CN</AvatarFallback>
-						</Avatar>
-						<Avatar className=" m-1 h-9 w-9 ">
-							<AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-							<AvatarFallback>CN</AvatarFallback>
-						</Avatar>
-						<Avatar className=" m-1 h-9 w-9 ">
-							<AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-							<AvatarFallback>CN</AvatarFallback>
-						</Avatar>
-
-						<Avatar className=" m-1 h-9 w-9 ring ring-pink-500 ring-offset-2  ">
-							<AvatarFallback>4+</AvatarFallback>
-						</Avatar>
 					</div> */}
 					<div className="border rounded-md flex">
 						<NavigationMenu>

@@ -30,12 +30,16 @@ export default function Home() {
 					Website Guide
 				</p>
 				<p className=" font-serif">
-					"/anyting" - anything specifice the place where you can put your
-					content you can keep the link and share it to your friends!!
+					&quot;/anyting&quot; - anything specifice the place where you can put
+					your content you can keep the link and share it to your friends!!
 				</p>
-				<p className=" font-serif">"/login" - Login to your own account.</p>
-				<p className=" font-serif">"/create" - create your account!</p>
-				<p className=" font-serif">"/profile" - your profile!</p>
+				<p className=" font-serif">
+					&quot;/login&quot; - Login to your own account.
+				</p>
+				<p className=" font-serif">
+					&quot;/create&quot; - create your account!
+				</p>
+				<p className=" font-serif">&quot;/profile&quot; - your profile!</p>
 			</div>
 		</>
 	);
