@@ -1,7 +1,47 @@
+"use client";
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
-
+import { useEffect } from "react";
+import axios from "axios";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+
 export default async function Profile() {
+	const router = useRouter();
+
+	useEffect(() => {
+		axios
+			.get(
+				"http://localhost:8080/api/protected-route",
+
+				{
+					// Request headers
+					headers: {
+						Authorization: localStorage.getItem("token"),
+						// Add other headers as needed
+					},
+				},
+			)
+
+			.then((res) => {
+				console.log(res);
+			})
+			.catch((error) => {
+				router.push("/");
+				if (error.response) {
+					console.log(error.response.data);
+					console.log(error.response.status);
+					console.log(error.response.headers);
+				} else if (error.request) {
+					console.log(error.request);
+				} else {
+					console.log("Error", error.message);
+				}
+			});
+
+		localStorage.getItem("token");
+		console.log("Header");
+	}, []);
+
 	return (
 		<div className=" h-screen w-screen flex justify-center items-center">
 			<div className="  w-[450px] flex flex-col items-center border py-10">

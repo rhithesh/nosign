@@ -21,6 +21,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useState } from "react";
+import axios from "axios";
 
 import useNumberStore from "@/zustand/store";
 
@@ -30,6 +31,9 @@ interface Dialouge {
 
 export default function Choice(props: Dialouge) {
 	const { number, setNumber, open, setOpen } = useNumberStore();
+	const [link, setLink] = useState({});
+
+	// axios.post("http://localhost:8080/api/protected-route", {})
 
 	//removing asChild has fixxed the error
 	return false ? (
@@ -129,7 +133,12 @@ export default function Choice(props: Dialouge) {
 												className=" text-center ring-green-300 font-mono   mx-auto"
 												id="link"
 												onChange={(e) => {
-													console.log("hello");
+													setLink({
+														...link,
+														link: e.target.value,
+														public: false,
+														private: true,
+													});
 												}}
 												defaultValue=""
 											/>
@@ -178,6 +187,12 @@ export default function Choice(props: Dialouge) {
 												className=" text-center ring-green-300 font-mono  mx-auto"
 												id="link"
 												onChange={(e) => {
+													setLink({
+														...link,
+														link: e.target.value,
+														public: true,
+														private: false,
+													});
 													console.log("hello");
 												}}
 												defaultValue=""

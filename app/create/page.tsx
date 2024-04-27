@@ -31,7 +31,6 @@ export default function Login() {
 					console.log("hello");
 				})
 				.catch((err) => {
-					console.log(err);
 					toast.error("Username already exists");
 				});
 		}

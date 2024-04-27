@@ -55,22 +55,6 @@ export default function Home({ params }: { params: { slug: string } }) {
 			socket.off("chat message");
 		};
 	}, []);
-	// useEffect(() => {
-	// 	const redis = new Redis({
-	// 		url: "https://apn1-equipped-grub-34450.upstash.io",
-	// 		token:
-	// 			"AYaSASQgMzE1MzM3MWItNDYzMi00ZjU2LWJiOTEtNjk3OTkyNDJmMTlhMTkxZmNmY2RhMDZlNGNmMDhmYjZkODZiMzhmZmZmYTU=",
-	// 	});
-	// 	redis
-	// 		.get(params.s)
-	// 		.then((data) => {
-	// 			console.log(data, "helloo");
-	// 			setValue(data);
-	// 		})
-	// 		.catch((err) => {
-	// 			console.log(err);
-	// 		});
-	// }, []);
 
 	return (
 		<>
