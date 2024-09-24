@@ -21,7 +21,7 @@ export default function Login() {
 					<form className=" flex justify-center items-center  w-full px-3">
 						<div className="grid w-full items-center gap-4">
 							<div className="flex flex-col space-y-1.5">
-								<h1 className="text-2xl font-bold">Sign in</h1>
+								<h1 className="text-2xl font-bold">Sign up</h1>
 							</div>
 							<div className="flex flex-col space-y-1.5">
 								<Label htmlFor="name">Username</Label>
@@ -44,7 +44,7 @@ export default function Login() {
 									}}
 								/>
 							</div>
-							<Button>Sign in</Button>
+							<Button>Sign up</Button>
 						</div>
 					</form>
 				</Card>

@@ -1,6 +1,6 @@
 "use client";
 import { Card } from "./ui/card";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useNumberStore from "@/zustand/store";
 
 export default function Dashcard({
@@ -10,8 +10,13 @@ export default function Dashcard({
 	text: string;
 	titel: string;
 }) {
-	const [hi, setHi] = useState(false);
 	const { number, setNumber } = useNumberStore();
+
+	useEffect(()=>{
+    
+
+
+	},[number])
 
 	return (
 		<>
@@ -25,7 +30,6 @@ export default function Dashcard({
 				</h1>
 				<svg
 					onClick={() => {
-						console.log("clicked");
 						setNumber(number - 1);
 					}}
 					className="absolute  border rounded-xl  right-0 top-14 opacity-0 group-hover:opacity-100 transition duration-200 ease-in-out  hover:scale-105"

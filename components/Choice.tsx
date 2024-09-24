@@ -1,81 +1,78 @@
 "use client";
+
 import { Button } from "@/components/ui/button";
 import {
-	Dialog,
-	DialogClose,
-	DialogContent,
-	DialogDescription,
-	DialogFooter,
-	DialogHeader,
-	DialogTitle,
-	DialogTrigger,
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
 } from "@/components/ui/dialog";
 import {
-	Tooltip,
-	TooltipContent,
-	TooltipProvider,
-	TooltipTrigger,
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
 } from "@/components/ui/tooltip";
-
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useState } from "react";
-import axios from "axios";
-
+import { useState, useRef, useEffect } from "react";
 import useNumberStore from "@/zustand/store";
 
-interface Dialouge {
-	children: React.ReactNode;
+interface Dialogue {
+  children: React.ReactNode;
 }
 
-export default function Choice(props: Dialouge) {
-	const { number, setNumber, open, setOpen } = useNumberStore();
-	const [link, setLink] = useState({});
+export default function Choice(props: Dialogue) {
+  const { number, setNumber, open, setOpen } = useNumberStore();
+  const [link, setLink] = useState({});
+  const closeRef = useRef<HTMLButtonElement>(null);
 
-	// axios.post("http://localhost:8080/api/protected-route", {})
 
-	//removing asChild has fixxed the error
-	return false ? (
-		""
-	) : (
-		<Dialog>
-			<DialogTrigger>
-				{props.children ? (
-					props.children
-				) : (
-					<>
-						<Button variant="outline" className="">
-							Share
-						</Button>
-					</>
-				)}
-			</DialogTrigger>
-			<DialogContent className="  w-[800px] h-[400px] max-w-full ">
-				{open ? (
-					<DialogHeader className=" w-full   gap-4  flex  justify-center items-center  ">
-						<DialogTitle className=" text-4xl font-mono">BACK TO!</DialogTitle>
-						<div className=" flex flex-col ">
-							<div className=" flex gap-3  justify-center items-center">
-								<Button className=" hover:bg-slate-500  hover:shadow-sm  ">
-									GoToLink
-								</Button>
-								<Button className=" hover:bg-slate-500  hover:shadow-sm  ">
-									dashboard
-								</Button>
-							</div>
-						</div>
-					</DialogHeader>
-				) : (
-					<>
-						<DialogHeader className=" space-y-3 flex justify-center items-center ">
-							<DialogTitle className=" font-mono text-3xl">
-								Add a link
-							</DialogTitle>
-							<DialogDescription className=" font-mono  ">
-								Enter link code
-							</DialogDescription>
-							<Tabs
+  async function addlink(){
+   
+   
+
+
+
+  }
+
+
+
+
+  
+
+   useEffect(()=>{
+  console.log(link)
+
+   },[link])
+
+
+
+  return (
+    <Dialog>
+      <DialogTrigger>
+        {props.children ? (
+          props.children
+        ) : (
+          <Button variant="outline" className="">
+            Share
+          </Button>
+        )}
+      </DialogTrigger>
+      <DialogContent className="w-[800px] h-[400px] max-w-full">
+        <DialogHeader className="space-y-3 flex justify-center items-center">
+          <DialogTitle className="font-mono text-3xl">
+            Add a link
+          </DialogTitle>
+          <DialogDescription className="font-mono">
+            Enter link code
+          </DialogDescription>
+		  <Tabs
 								defaultValue="account "
 								className="w-[400px]  flex flex-col justify-center flex-wrap">
 								<TabsList className=" rounded-full  max-w-fit mx-auto">
@@ -201,26 +198,25 @@ export default function Choice(props: Dialouge) {
 									</div>
 								</TabsContent>
 							</Tabs>
-						</DialogHeader>
+        </DialogHeader>
 
-						<DialogFooter className="sm:justify-start  mx-auto font-mono text-2xl flex">
-							<Button
-								className="  hover:bg-slate-500  hover:shadow-sm  "
-								onClick={() => {
-									setOpen(!open);
-									setNumber(number + 1);
-								}}>
-								create!
-							</Button>
-						</DialogFooter>
-					</>
-				)}
-			</DialogContent>
-			<DialogClose
-				onClick={() => {
-					setOpen(false);
-				}}
-			/>
-		</Dialog>
-	);
+        <DialogFooter className="sm:justify-start mx-auto font-mono text-2xl flex">
+          <Button
+            className="hover:bg-slate-500 hover:shadow-sm"
+            onClick={() => {
+              setOpen(!open);
+              setNumber(number + 1);
+              closeRef.current?.click();
+              //async database call
+			
+			}}
+          >
+            create!
+
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+      <DialogClose ref={closeRef} onClick={() => setOpen(false)} />
+    </Dialog>
+  );
 }

@@ -10,38 +10,13 @@ import { useEffect } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+
 export default function Dashboard() {
-	const { number, setNumber, setOpen } = useNumberStore();
-	const router = useRouter();
 
-	axios
-		.get(
-			"http://localhost:8080/api/protected-route",
+const { number, setNumber, setOpen } = useNumberStore();
 
-			{
-				// Request headers
-				headers: {
-					Authorization: localStorage.getItem("token"),
-					// Add other headers as needed
-				},
-			},
-		)
 
-		.then((res) => {
-			console.log(res);
-		})
-		.catch((error) => {
-			// router.push("/");
-			if (error.response) {
-				console.log(error.response.data);
-				console.log(error.response.status);
-				console.log(error.response.headers);
-			} else if (error.request) {
-				console.log(error.request);
-			} else {
-				console.log("Error", error.message);
-			}
-		});
+
 
 	return (
 		<>
@@ -70,9 +45,11 @@ export default function Dashboard() {
 					</div>
 					<div className=" flex flex-wrap  gap-5 w-[1400px]">
 						{Array.from({ length: number }).map((a, index) => (
-							<Link href={"/ab/bc"}>
-								<Dashcard key={1} text="hithesh" titel="My name" />
+							<div key={index} >
+							<Link   href={"/ab/bc"}>
+								<Dashcard text="hithesh" titel="My name" />
 							</Link>
+							</div>
 						))}
 					</div>
 				</div>
