@@ -22,9 +22,20 @@ model User {
   hashedPassword String?
   accounts       Account[]
   sessions       Session[]
+  privateLinks PrivateLink[] // A user can have many private links
+
 
   @@map("users")
 }
+
+model PrivateLink {
+  id       Int    @id @default(autoincrement())
+  url      String
+  message  String?
+  userId   String
+  user     User   @relation(fields: [userId], references: [id]) // Foreign key connecting to User
+}
+
 
 model Account {
   id                String  @id @default(cuid())

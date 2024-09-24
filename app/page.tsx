@@ -8,14 +8,10 @@ import dynamic from "next/dynamic";
 import { useEffect } from "react";
 import axios from "axios";
 
-const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 export default function Home() {
 	const [value, setValue] = useState("");
 	useEffect(() => {
-		axios.post("http://localhost:8080", {
-			email: "ceewce",
-			password: "cewcew",
-		});
+	
 	}, []);
 
 	return (
