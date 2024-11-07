@@ -6,12 +6,21 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useEffect, useState } from "react";
+import { signIn } from "next-auth/react";
+
 
 export default function Login() {
 	const [value, setValue] = useState({});
 
-	function Login() {
+	function login() {
 		console.log(value);
+		signIn("credentials", {
+			redirect: false,
+			email: value.username,
+			password: value.password,
+		  });
+
+
 	}
 
 	return (
@@ -44,7 +53,10 @@ export default function Login() {
 									}}
 								/>
 							</div>
-							<Button>Sign up</Button>
+							<Button onClick={(e)=>{
+								e.preventDefault()
+								login()
+							}}>Sign up</Button>
 						</div>
 					</form>
 				</Card>

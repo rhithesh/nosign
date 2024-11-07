@@ -1,59 +1,67 @@
-import { Adapter } from "next-auth/adapters";
-import GoogleProvider from "next-auth/providers/google";
-import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import { SessionStrategy } from "next-auth";
-import db from "./prismaDb";
-import type { AuthOptions, DefaultSession } from "next-auth";
+import NextAuth from "next-auth/next";
+import CredentialsProvider from "next-auth/providers/credentials";
 
-declare module "next-auth" {
-  interface Session extends DefaultSession {
-    user: {
-      image: string | undefined;
-      id: string;
-      name?: string | null;
-      email?: string | null;
-    };
-    accessToken?: string;
-  }
-  interface User {
-    accessToken?: string;
-  }
-}
-export const authOptions: AuthOptions = {
-  adapter: PrismaAdapter(db) as Adapter,
+const backendURL = process.env.NEXT_PUBLIC_BACKEND_URL;
+export const authOptions = {
   providers: [
-    GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID ?? "",
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? "",
+    CredentialsProvider({
+      type: "credentials",
+      credentials: {
+        email: {
+          label: "Email",
+          type: "email",
+        },
+        password: { label: "Password", type: "password" },
+      },
+      async authorize(credentials) {
+        const credentialDetails = {
+          email: credentials.email,
+          password: credentials.password,
+        };
+        console.log(credentialDetails)
+
+        const resp = await fetch(backendURL + "/auth/login", {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(credentialDetails),
+        });
+        const user = await resp.json();
+        if (user.is_success) {
+          console.log("nextauth daki user: " + user.is_success);
+
+          return user;
+        } else {
+          console.log("check your credentials");
+          return null;
+        }
+      },
     }),
   ],
-  debug: process.env.NODE_ENV === "development",
-  secret: process.env.NEXTAUTH_SECRET,
-  session: {
-    strategy: "jwt" as SessionStrategy,
-    maxAge: 7 * 24 * 60 * 60, // 7 days
-    updateAge: 24 * 60 * 60, // 24 hours
-  },
   callbacks: {
-    async jwt({ token, user }) {
+    jwt: async ({ token, user }) => {
       if (user) {
-        token.id = user.id;
-        token.accessToken = user.accessToken;
+        token.email = user.data.auth.email;
+        token.username = user.data.auth.userName;
+        token.user_type = user.data.auth.userType;
+        token.accessToken = user.data.auth.token;
       }
+
       return token;
     },
-    async session({ session, token }) {
+    session: ({ session, token, user }) => {
       if (token) {
-        session.user.id = token.id as string;
-        session.accessToken = token.accessToken as string | undefined;
+        session.user.email = token.email;
+        session.user.username = token.userName;
+        session.user.accessToken = token.accessToken;
       }
       return session;
     },
-    async redirect({ baseUrl }) {
-      return baseUrl;
-    },
   },
-  pages: {
-    signIn: "/auth/login",
-  },
+
 };
+
+
+export const { auth, signIn, signOut }=NextAuth(authOptions);

@@ -8,8 +8,7 @@ import dynamic from "next/dynamic";
 import { useEffect, useRef } from "react";
 import io from "socket.io-client";
 import { Redis } from "@upstash/redis";
-
-const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+import FileUploadComponent from "@/components/fileComponent";
 const socket = io("https://nosignbackend.onrender.com", {
 	transports: ["websocket"],
 });
@@ -59,8 +58,9 @@ export default function Home({ params }: { params: { slug: string } }) {
 	return (
 		<>
 			<Header />
+			<div className=" gap-3 flex w-screen h-[89vh]  justify-evenly  ">
 			<textarea
-				className=" border-2 border-black w-screen h-screen font-mono"
+				className=" border-2  basis-[60%] border-black  font-mono"
 				value={value}
 				onChange={async (e) => {
 					setValue(e.target.value);
@@ -69,6 +69,18 @@ export default function Home({ params }: { params: { slug: string } }) {
 					socket.emit("chat message", e.target.value, params.s);
 				}}
 			/>
+			<div  className=" basis-[30%] gap-4  flex flex-col border-2 border-black">
+                <div className="basis-[87%] border-black border-2">
+					<p className=" text-2xl font-sans"> No files to show here</p>
+				</div>
+				<div className="basis-[10%]  ">
+					<FileUploadComponent/>
+				</div>
+
+			</div>
+
+			</div>
+			
 
 			<h1>{params.slug}</h1>
 		</>

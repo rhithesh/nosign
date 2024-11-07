@@ -2,6 +2,8 @@
 import type { Metadata } from "next";
 import { Big_Shoulders_Stencil_Text } from "next/font/google";
 import "./globals.css";
+import "@uploadthing/react/styles.css";
+
 
 import { SessionProvider } from 'next-auth/react';
 
