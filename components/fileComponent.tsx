@@ -52,7 +52,7 @@ const FileUploadComponent = (props) => {
 
   appearance={{
     button:
-      "ut-ready:bg-black font-sans ut-uploading:cursor-not-allowed  after:bg-orange-400",
+      "ut-ready:bg-black font-sans ut-uploading:cursor-not-allowed  after:bg-black",
     container: "w-max flex-row flex rounded-md border-cyan-300 bg-white",
     allowedContent:
       "flex h-8 flex-col items-center justify-center px-2 text-white",
