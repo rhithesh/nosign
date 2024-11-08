@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { PlusCircleIcon } from 'lucide-react';
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import { UploadButton } from "@/lib/uploadthing";
-
-const FileUploadComponent = () => {
+import {uploadDb} from "@/action/actiont"
+import { revalidatePath } from 'next/cache'
+const FileUploadComponent = (props) => {
   const [file, setFile] = useState<File | null>(null);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -39,6 +40,15 @@ const FileUploadComponent = () => {
       return `Stuff you can upload: ${fileTypes.join(", ")}`;
     },
   }}
+  onClientUploadComplete={(res) => {
+    // Do something with the response
+    console.log("Files: ", res[0].url);
+    uploadDb(props.value,res[0].url)
+    revalidatePath(`/${props.value}`)
+    alert("Upload Completed");
+
+  }}
+
 
   appearance={{
     button:
