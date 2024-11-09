@@ -77,30 +77,31 @@ export default function Home({ params }: { params: { slug: string } }) {
   return (
     <>
       <Header />
-      <div className="gap-3 flex w-screen h-[89vh] justify-evenly">
-        <textarea
-          className="border-2 basis-[60%] border-black font-mono"
-          value={value}
-          onChange={async (e) => {
-            setValue(e.target.value);
-            const a = await redis.set(params.s, e.target.value);
-            console.log(a);
-            socket.emit("chat message", e.target.value, params.s);
-          }}
-        />
-        <div className="basis-[30%] gap-4 flex flex-col border-2 border-black">
-          <div className="basis-[87%] border-black border-2">
-            <p className="text-2xl font-sans">No files to show here</p>
+      <div className="gap-3 mx-5 flex w-screen h-[89vh] justify-evenly">
+      <textarea
+  className="border-2 basis-[60%] rounded-xl border-black font-mono ring-0 focus:ring-0 outline-none focus:outline-none"
+  value={value}
+  onChange={async (e) => {
+    setValue(e.target.value);
+    const a = await redis.set(params.s, e.target.value);
+    console.log(a);
+    socket.emit("chat message", e.target.value, params.s);
+  }}
+/>
+
+        <div className="basis-[40%] gap-4 flex flex-col   border-black">
+          <div className="basis-[87%] rounded-xl border-2">
+{   files.length>0 ?  <p className="text-2xl font-sans">your files</p>  :          <p className="text-2xl font-sans">No files to show here</p>}
             {files.length > 0 ? (
-              files.map((e) => {
+              files.map((e,b) => {
                 return (
-                  <Link
+                  <Link download={true}
 				  target="_blank"
                     key={e.id}
                     href={e.fileUrl}
-                    className="cursor-pointer text-blue-500"
+                    className="cursor-pointer text-black  my-3 ml-4 pl-4 bg-fuchsia-600 "
                   >
-                    {e.fileUrl} {/* Display the file URL as text */}
+                {`File ${b + 1}`}
                   </Link>
                 );
               })
@@ -108,11 +109,11 @@ export default function Home({ params }: { params: { slug: string } }) {
               <p>No files found.</p>
             )}
           </div>
+		  <FileUploadComponent value={params.s} />
+
         </div>
 
-        <div className="basis-[10%]">
-          <FileUploadComponent value={params.s} />
-        </div>
+       
       </div>
 
       <h1>{params.slug}</h1>

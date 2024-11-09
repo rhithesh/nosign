@@ -1,14 +1,14 @@
 "use client"
 import type { Metadata } from "next";
-import { Big_Shoulders_Stencil_Text } from "next/font/google";
+import { Noto_Sans_Tifinagh } from "next/font/google";
 import "./globals.css";
 import "@uploadthing/react/styles.css";
 
 
 import { SessionProvider } from 'next-auth/react';
 
-const inter = Big_Shoulders_Stencil_Text({
-	weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+const inter = Noto_Sans_Tifinagh({
+	weight: ["400" ],
 	subsets: ["latin"],
 });
 
