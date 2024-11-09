@@ -44,8 +44,22 @@ const FileUploadComponent = (props) => {
     // Do something with the response
     console.log("Files: ", res[0].url);
     uploadDb(props.value,res[0].url)
-    revalidatePath(`/${props.value}`)
-    alert("Upload Completed");
+
+    async function getFiles() {
+      const response = await fetch("/api/getfiles", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ path: props.value }), // Send the path as part of the request body
+      });
+      const data = await response.json();
+      console.log(data)
+      props.setFiles(data.data);
+    }
+
+    getFiles()
+
 
   }}
 

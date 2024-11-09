@@ -109,7 +109,7 @@ export default function Home({ params }: { params: { slug: string } }) {
               <p>No files found.</p>
             )}
           </div>
-		  <FileUploadComponent value={params.s} />
+		  <FileUploadComponent setFiles={setFiles} value={params.s} />
 
         </div>
 
