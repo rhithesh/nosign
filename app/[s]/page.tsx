@@ -76,10 +76,12 @@ export default function Home({ params }: { params: { slug: string } }) {
 
   return (
     <>
+	<div className=" overflow-hidden">
+
       <Header />
-      <div className="gap-3 mx-5 flex w-screen h-[89vh] justify-evenly">
+      <div className="gap-3 mx-5 flex w-screen h-[89vh] overflow-hidden justify-evenly">
       <textarea
-  className="border-2 basis-[60%] rounded-xl border-black font-mono ring-0 focus:ring-0 outline-none focus:outline-none"
+  className="border-2 basis-[60%] mb-8 pl-3 pt-3 rounded-xl border-black font-mono ring-0 focus:ring-0 outline-none focus:outline-none"
   value={value}
   onChange={async (e) => {
     setValue(e.target.value);
@@ -89,9 +91,9 @@ export default function Home({ params }: { params: { slug: string } }) {
   }}
 />
 
-        <div className="basis-[40%] gap-4 flex flex-col   border-black">
-          <div className="basis-[87%] rounded-xl border-2">
-{   files.length>0 ?  <p className="text-2xl font-sans">your files</p>  :          <p className="text-2xl font-sans">No files to show here</p>}
+        <div className="basis-[30%] gap-4 flex flex-col   border-black">
+          <div className="basis-[87%] flex flex-col rounded-xl border-2">
+{   files.length>0 ?  <p className="text-2xl pl-2 font-sans">your files</p>  :          <p className="text-2xl font-sans">No files to show here</p>}
             {files.length > 0 ? (
               files.map((e,b) => {
                 return (
@@ -99,7 +101,7 @@ export default function Home({ params }: { params: { slug: string } }) {
 				  target="_blank"
                     key={e.id}
                     href={e.fileUrl}
-                    className="cursor-pointer text-black  my-3 ml-4 pl-4 bg-fuchsia-600 "
+                    className="cursor-pointer w-[300px] text-black  my-3 ml-4 pl-4 bg-fuchsia-600 "
                   >
                 {`File ${b + 1}`}
                   </Link>
@@ -115,8 +117,10 @@ export default function Home({ params }: { params: { slug: string } }) {
 
        
       </div>
+	  
+	  
+</div>
 
-      <h1>{params.slug}</h1>
     </>
   );
 }
