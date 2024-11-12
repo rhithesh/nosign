@@ -10,6 +10,7 @@ import FileUploadComponent from "@/components/fileComponent";
 import Link from "next/link";
 import io from "socket.io-client";
 import prisma from "@/lib/prismaDb";
+import { Share } from "lucide-react";
 
 const socket = io("https://nosignbackend.onrender.com", {
   transports: ["websocket"],
@@ -111,7 +112,13 @@ export default function Home({ params }: { params: { slug: string } }) {
               <p>No files found.</p>
             )}
           </div>
-		  <FileUploadComponent setFiles={setFiles} value={params.s} />
+          <div className=" flex gap-11">
+          <FileUploadComponent setFiles={setFiles} value={params.s} />
+      <Share className=" cursor-pointer mt-2"/>
+
+
+
+          </div>
 
         </div>
 

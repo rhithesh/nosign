@@ -7,20 +7,7 @@ import { revalidatePath } from 'next/cache'
 const FileUploadComponent = (props) => {
   const [file, setFile] = useState<File | null>(null);
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      setFile(e.target.files[0]);
-    }
 
-
-  };
-
-  const handleUpload = () => {
-    if (file) {
-      // Upload logic goes here
-      console.log('Uploading file:', file);
-    }
-  };
 
   return (
     <div className='flex'>
