@@ -68,9 +68,12 @@ export default function Home({ params }: { params: { slug: string } }) {
         },
         body: JSON.stringify({ path: params.s }), // Send the path as part of the request body
       });
-      const data = await response.json();
+      if (response.ok) {
+        
+      
+        const data = await response.json();
       setFiles(data.data);
-    }
+    }}
 
     getFiles();
   }, []);
