@@ -48,7 +48,7 @@ export default function Component() {
 			</header>
 			<main className="flex-1 justify-center items-center">
 				<section className="w-full h-screen py-6 sm:py-12 md:py-24 lg:py-32 xl:py-48  ">
-					<div className=" mx-auto container px-4 md:px-6 flex flex-col items-center hover:shadow-sm    justify-center space-y-4 text-center   py-5 rounded-xl w-[700px]">
+					<div className=" mx-auto container px-4 md:px-6 flex flex-col items-center     justify-center space-y-4 text-center   py-5 rounded-xl w-[700px]">
 						<div className="space-y-2">
 							<h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
 								NoSign for Everyone
@@ -57,18 +57,12 @@ export default function Component() {
 								Maybe it is easier to be quick and now
 							</p>
 						</div>
-						<div className="flex flex-col gap-2 min-[400px]:flex-row">
-							<Link
-								className="inline-flex h-10 hover:scale-105 items-center justify-center rounded-md border border-gray-200 border-gray-200 bg-white px-8 text-sm font-medium shadow-sm transition-colors hover:bg-gray-100 hover:text-gray-900 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:border-gray-800 dark:border-gray-800 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus-visible:ring-gray-300"
-								href="/anything">
-								Get Started
-							</Link>
-						</div>
+					
 						<div className="flex mx-auto">
 						
-						<input onChange={(e)=>{
+						<input  onChange={(e)=>{
 							setLink(e.target.value)
-						}} className=" border-2 border-l-black border-t-black  border-b-black rounded-3xl"/>
+						}} className=" px-2 border-2 border-l-black border-t-black focus:outline-none border-b-black rounded-3xl"/>
 					<p className=" hover:cursor-pointer rounded-xl border-2 ml-2">
 						<Link href={ `/${link}`}>Lets Go!
 						</Link>
