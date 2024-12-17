@@ -14,5 +14,5 @@ export async function POST(Req,Res){
         },
       });
 
-    return Response.json({ data: route.files})
+    return Response.json({ data: route?.files})
 }

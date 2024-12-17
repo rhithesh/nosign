@@ -30,9 +30,10 @@ const FileUploadComponent = (props) => {
   onClientUploadComplete={(res) => {
     // Do something with the response
     console.log("Files: ", res[0].url);
-    uploadDb(props.value,res[0].url)
 
     async function getFiles() {
+      const o= await     uploadDb(props.value,res[0].url)
+      console.log(o)
       const response = await fetch("/api/getfiles", {
         method: "POST",
         headers: {
@@ -41,7 +42,7 @@ const FileUploadComponent = (props) => {
         body: JSON.stringify({ path: props.value }), // Send the path as part of the request body
       });
       const data = await response.json();
-      console.log(data)
+      console.log(data,"jkkjbkjbjkbkbkkjb")
       props.setFiles(data.data);
     }
 
