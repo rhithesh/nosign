@@ -97,8 +97,8 @@ export default function Home({ params }: { params: { slug: string } }) {
 
         <div className="basis-[30%] gap-4 flex flex-col   border-black">
           <div className="basis-[87%] flex flex-col rounded-xl border-2">
-{   files.length>0 ?  <p className="text-2xl pl-2 font-sans">your files</p>  :          <p className="text-2xl font-sans">No files to show here</p>}
-            {files.length > 0 ? (
+{   files?.length>0 ?  <p className="text-2xl pl-2 font-sans">your files</p>  :          <p className="text-2xl font-sans">No files to show here</p>}
+            {files?.length > 0 ? (
               files.map((e,b) => {
                 return (
                   <Link download={true}
