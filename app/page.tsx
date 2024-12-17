@@ -1,3 +1,4 @@
+"use client"
 import Link from "next/link";
 import Infinity from "./infinity.svg";
 import Image from "next/image";
@@ -10,9 +11,11 @@ import {
 	NavigationMenuTrigger,
 	navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-
-
+import { useRouter } from "next/router";
+import React from "react";
 export default function Component() {
+	const [link, setLink] = React.useState("");
+	
 	return (
 		<div className="flex flex-col min-h-[100dvh]">
 			<header className="px-4 lg:px-6 h-14 flex items-center justify-start">
@@ -45,7 +48,7 @@ export default function Component() {
 			</header>
 			<main className="flex-1 justify-center items-center">
 				<section className="w-full h-screen py-6 sm:py-12 md:py-24 lg:py-32 xl:py-48  ">
-					<div className=" mx-auto container px-4 md:px-6 flex flex-col items-center hover:shadow-sm    justify-center space-y-4 text-center hover:scale-105  py-5 rounded-xl w-[700px]">
+					<div className=" mx-auto container px-4 md:px-6 flex flex-col items-center hover:shadow-sm    justify-center space-y-4 text-center   py-5 rounded-xl w-[700px]">
 						<div className="space-y-2">
 							<h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
 								NoSign for Everyone
@@ -61,7 +64,18 @@ export default function Component() {
 								Get Started
 							</Link>
 						</div>
+						<div className="flex mx-auto">
+						
+						<input onChange={(e)=>{
+							setLink(e.target.value)
+						}} className=" border-2 border-l-black border-t-black  border-b-black rounded-3xl"/>
+					<p className=" hover:cursor-pointer rounded-xl border-2 ml-2">
+						<Link href={ `/${link}`}>Lets Go!
+						</Link>
+						</p>
 					</div>
+					</div>
+					
 				</section>
 			</main>
 			<footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
